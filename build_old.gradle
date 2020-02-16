@@ -2,7 +2,6 @@ plugins {
 	id 'org.springframework.boot' version '2.1.12.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-	id 'com.palantir.docker' version '19.03.6'
 }
 
 group = 'com.example'
@@ -11,12 +10,6 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
-}
-docker{
-	name "${project.name}"
-	dockerfile file('Dockerfile')
-	copySpec.from(jar).rename(".*","app.jar")
-	buildArgs(['JAR_FILE':"app.jar"])
 }
 
 dependencies {
