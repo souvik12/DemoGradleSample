@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.12.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-	id 'com.palantir.docker' version '19.03.6'
+	id 'com.palantir.docker'
 }
 
 group = 'com.example'

@@ -2,8 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.12.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-	id 'com.palantir.docker'
-}
+	}
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -22,4 +21,5 @@ docker{
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'com.github.docker-java', name: 'docker-java', version: '3.2.0-rc4'
 }
