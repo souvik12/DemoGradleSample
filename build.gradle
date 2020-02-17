@@ -34,8 +34,6 @@ repositories {
 }
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'groovy'
-apply from: "$rootDir/gradle/publish-jar.gradle"
-group 'com.palantir.gradle.docker'
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
