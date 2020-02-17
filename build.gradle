@@ -14,12 +14,7 @@ repositories {
 }
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'groovy'
-apply plugin: 'com.palantir.baseline'
-apply plugin: 'com.palantir.consistent-versions'
-apply plugin: 'com.palantir.git-version'
-apply plugin: 'org.inferred.processors'
 apply from: "$rootDir/gradle/publish-jar.gradle"
-
 group 'com.palantir.gradle.docker'
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
