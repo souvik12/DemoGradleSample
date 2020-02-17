@@ -11,15 +11,38 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
-docker{
-	name "${project.name}"
-	dockerfile file('Dockerfile')
-	copySpec.from(jar).rename(".*","app.jar")
-	buildArgs(['JAR_FILE':"app.jar"])
-}
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+apply plugin: 'com.palantir.baseline'
+apply plugin: 'com.palantir.consistent-versions'
+apply plugin: 'com.palantir.git-version'
+apply plugin: 'org.inferred.processors'
+apply from: "$rootDir/gradle/publish-jar.gradle"
 
+group 'com.palantir.gradle.docker'
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile group: 'com.github.docker-java', name: 'docker-java', version: '3.2.0-rc4'
+	
+}
+pluginBundle {
+    website = 'https://github.com/palantir/gradle-docker'
+    vcsUrl = 'https://github.com/palantir/gradle-docker'
+    description = 'Gradle Docker is a simple docker orchestrator for executing docker build and push from within Gradle.'
+    tags = ['docker']
+
+    plugins {
+        dockerPlugin {
+            id = 'com.palantir.docker'
+            displayName = 'Palantir Gradle Docker'
+        }
+        dockerComposePlugin {
+            id = 'com.palantir.docker-compose'
+            displayName = 'Palantir Gradle Docker-Compose'
+        }
+        dockerRunPlugin {
+            id = 'com.palantir.docker-run'
+            displayName = 'Palantir Gradle Docker-Run'
+        }
+    }
 }
